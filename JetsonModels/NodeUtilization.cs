@@ -10,6 +10,10 @@ namespace JetsonModels
     public class NodeUtilization
     {
         /// <summary>
+        /// Gets or sets the Id number of the <see cref="NodeUtilization"/> data point.
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// Gets or sets the timestamp at which the statistics were obtained.
         /// </summary>
         public DateTime TimeStamp { get; set; }

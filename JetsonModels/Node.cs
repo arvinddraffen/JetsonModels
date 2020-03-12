@@ -9,10 +9,10 @@ namespace JetsonModels
     public class Node
     {
         /// <summary>
-        /// Gets or sets the Id of this <see cref="Node"/>.
+        /// Gets or sets the unique Id of this <see cref="Node"/>.
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public uint Id { get; set; }
 
         /// <summary>
         /// Gets or sets the IP Address of this <see cref="Node"/>.
@@ -24,8 +24,9 @@ namespace JetsonModels
         /// </summary>
         public virtual ICollection<NodeUtilization> Utilization { get; set; }
 
+        /// <summary>
+        /// Gets or sets the list containing sampled power statistics of this <see cref="Node"/>.
+        /// </summary>
         public virtual ICollection<NodePower> Power { get; set; }
-
-        public virtual ICollection<CpuCore> Cores { get; set; }
     }
 }

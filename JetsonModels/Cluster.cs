@@ -1,8 +1,9 @@
-﻿using JetsonWeb.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+
+using JetsonWeb.Models;
 
 namespace JetsonModels
 {
@@ -15,7 +16,7 @@ namespace JetsonModels
         /// Gets or sets the Id of the cluster.
         /// </summary>
         [Key]
-        public int Id { get; set; }
+        public uint Id { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of nodes which constitute the cluster.

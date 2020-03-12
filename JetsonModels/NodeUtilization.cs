@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JetsonModels
 {
@@ -10,9 +8,10 @@ namespace JetsonModels
     public class NodeUtilization
     {
         /// <summary>
-        /// Gets or sets the Id number of the <see cref="NodeUtilization"/> data point.
+        /// Gets or sets a unique identifier for this <see cref="NodeUtilization"/> data point.
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Gets or sets the timestamp at which the statistics were obtained.
         /// </summary>
@@ -24,13 +23,13 @@ namespace JetsonModels
         public float CPUUtilization { get; set; }
 
         /// <summary>
-        /// Gets or sets the memory utilization of the node.
+        /// Gets or sets the total memory available on this <see cref="Node"/>, expressed in megabytes.
         /// </summary>
-        public float MemoryUtilization { get; set; }
+        public uint MemoryAvailable { get; set; }
 
         /// <summary>
-        /// Gets or sets the power usage of the node.
+        /// Gets or sets the total memory used on this <see cref="Node"/>, expressed in megabytes.
         /// </summary>
-        public float PowerUsage { get; set; }
+        public uint MemoryUsed { get; set; }
     }
 }

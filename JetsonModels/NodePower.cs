@@ -28,5 +28,10 @@ namespace JetsonModels
         /// Gets or sets the voltage of the node, expressed in volts.
         /// </summary>
         public float Voltage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the power usage of the node, expressed in watts.
+        /// </summary>
+        public float Power { get; set; }
     }
 }

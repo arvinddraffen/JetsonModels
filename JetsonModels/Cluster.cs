@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 using JetsonWeb.Models;
@@ -15,6 +16,7 @@ namespace JetsonModels
         /// <summary>
         /// Gets or sets the Id of the cluster.
         /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
         public uint Id { get; set; }
 

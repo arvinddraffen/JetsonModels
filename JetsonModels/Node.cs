@@ -27,15 +27,5 @@ namespace JetsonModels
         /// Gets or sets the IP Address of this <see cref="Node"/>.
         /// </summary>
         public string IPAddress { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list containing sampled utilization statistics of this <see cref="Node"/>.
-        /// </summary>
-        public virtual ICollection<NodeUtilization> Utilization { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list containing sampled power statistics of this <see cref="Node"/>.
-        /// </summary>
-        public virtual ICollection<NodePower> Power { get; set; }
     }
 }

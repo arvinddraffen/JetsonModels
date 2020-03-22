@@ -32,5 +32,7 @@ namespace JetsonModels
         /// Gets or sets the total memory used on this <see cref="Node"/>, expressed in megabytes.
         /// </summary>
         public uint MemoryUsed { get; set; }
+
+        public uint GlobalNodeId { get; set; }
     }
 }

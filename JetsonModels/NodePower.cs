@@ -33,5 +33,7 @@ namespace JetsonModels
         /// Gets or sets the power usage of the node, expressed in watts.
         /// </summary>
         public float Power { get; set; }
+
+        public uint GlobalNodeId { get; set; }
     }
 }

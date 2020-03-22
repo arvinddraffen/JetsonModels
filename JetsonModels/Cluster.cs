@@ -23,11 +23,11 @@ namespace JetsonModels
         /// <summary>
         /// Gets or sets the collection of nodes which constitute the cluster.
         /// </summary>
-        public virtual ICollection<Node> Nodes { get; set; }
+        public List<Node> Nodes { get; set; }
 
-        /// <summary>
-        /// Gets or sets the collection of statistics from sreport.
-        /// </summary>
-        public virtual ICollection<SreportUtilization> SreportUtilizations { get; set; }
+        ///// <summary>
+        ///// Gets or sets the collection of statistics from sreport.
+        ///// </summary>
+        //public virtual ICollection<SreportUtilization> SreportUtilizations { get; set; }
     }
 }

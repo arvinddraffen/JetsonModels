@@ -14,6 +14,19 @@ namespace JetsonModels
     public class Cluster
     {
         /// <summary>
+        /// Holds the possible types for the <see cref="Cluster"/>.
+        /// </summary>
+        public enum ClusterType
+        {
+            RaspberryPi,
+            Jetson,
+            Odroid,
+            GenericX86,
+            GenericARM,
+            Other,
+        }
+
+        /// <summary>
         /// Gets or sets the Id of the cluster.
         /// </summary>
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -25,9 +38,14 @@ namespace JetsonModels
         /// </summary>
         public List<Node> Nodes { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets the collection of statistics from sreport.
-        ///// </summary>
-        //public virtual ICollection<SreportUtilization> SreportUtilizations { get; set; }
+        /// <summary>
+        /// Gets or sets the rate at which <see cref="Node"/>s in the <see cref="Cluster"/> produce new data.
+        /// </summary>
+        public TimeSpan RefreshRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the <see cref="Cluster"/> as per types defined in <see cref="ClusterType"/>.
+        /// </summary>
+        public ClusterType clusterType { get; set; }
     }
 }

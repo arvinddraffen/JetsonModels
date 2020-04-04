@@ -34,6 +34,11 @@ namespace JetsonModels
         public uint Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the <see cref="Cluster"/>.
+        /// </summary>
+        public string ClusterName { get; set; }
+
+        /// <summary>
         /// Gets or sets the collection of nodes which constitute the cluster.
         /// </summary>
         public List<Node> Nodes { get; set; }

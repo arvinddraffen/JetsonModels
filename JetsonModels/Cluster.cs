@@ -51,6 +51,6 @@ namespace JetsonModels
         /// <summary>
         /// Gets or sets the type of the <see cref="Cluster"/> as per types defined in <see cref="ClusterType"/>.
         /// </summary>
-        public ClusterType clusterType { get; set; }
+        public ClusterType Type { get; set; }
     }
 }

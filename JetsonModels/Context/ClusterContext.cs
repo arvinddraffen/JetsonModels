@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Newtonsoft.Json;
 
-namespace JetsonWeb.Data
+namespace JetsonModels.Context
 {
     /// <summary>
     /// <see cref="ClusterContext"/> provides an interface to the SQLite database with EntityFramework.

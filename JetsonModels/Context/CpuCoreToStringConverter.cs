@@ -2,7 +2,7 @@
 using JetsonModels;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace JetsonWeb.Data
+namespace JetsonModels.Context
 {
     /// <summary>
     /// Converts a collection of <see cref="CpuCore" /> to a <see cref="string" />.

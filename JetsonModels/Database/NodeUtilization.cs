@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JetsonModels
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="NodeUtilization"/> holds the utilization statistics of the node at a particular point in time.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JetsonModels
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="NodePower"/> contains the statistics for reporting power on a specific node.

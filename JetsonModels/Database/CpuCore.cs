@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace JetsonModels
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="CpuCore"/> holds the utilization statistics for a particular core within a node.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace JetsonWeb.Models
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="SreportUtilization"></see> model.

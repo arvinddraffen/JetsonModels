@@ -4,9 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-using JetsonWeb.Models;
-
-namespace JetsonModels
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="Cluster"/> holds utilization stats for a particular cluster.

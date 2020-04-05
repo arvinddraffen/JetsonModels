@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JetsonModels
+namespace JetsonModels.Database
 {
     /// <summary>
     /// <see cref="Node"/> holds the data of a particular node in order to report utilization.

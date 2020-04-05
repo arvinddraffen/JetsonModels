@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using JetsonModels;
+using JetsonModels.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -16,12 +16,30 @@ namespace JetsonModels.Context
     /// </summary>
     public class ClusterContext : DbContext
     {
+        public static readonly Microsoft.Extensions.Logging.LoggerFactory DebugLoggingFactory =
+           new Microsoft.Extensions.Logging.LoggerFactory(new[]
+           {
+                new Microsoft.Extensions.Logging.Debug.DebugLoggerProvider(),
+           });
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ClusterContext"/> class.
         /// </summary>
-        public ClusterContext()
+        /// <param name="asNoTracking">
+        /// Determines whether global object tracking should be turned off or on
+        /// with Entity Framework. If object tracking is enabled, the database will
+        /// be automatically generated if needed.
+        /// </param>
+        public ClusterContext(bool asNoTracking = false)
         {
-            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            if (asNoTracking)
+            {
+                this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            }
+            else
+            {
+                this.Database.EnsureCreated();
+            }
         }
 
         /// <summary>
@@ -29,21 +47,22 @@ namespace JetsonModels.Context
         /// </summary>
         public DbSet<Cluster> Clusters { get; set; }
 
+        /// <summary>
+        /// Gets or sets the database set of all Node Power Entries (<see cref="NodePower"/>) in the database.
+        /// </summary>
         public DbSet<NodePower> PowerData { get; set; }
 
+        /// <summary>
+        /// Gets or sets the database set of all Node Utilization Entries (<see cref="UtilizationData"/>) in the database.
+        /// </summary>
         public DbSet<NodeUtilization> UtilizationData { get; set; }
-
-        //public static readonly Microsoft.Extensions.Logging.LoggerFactory _myLoggerFactory =
-        //    new Microsoft.Extensions.Logging.LoggerFactory(new[] {
-        //        new Microsoft.Extensions.Logging.Debug.DebugLoggerProvider(),
-        //    });
 
         /// <inheritdoc/>
         /// <param name="options"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options
-                //.UseLoggerFactory(_myLoggerFactory)
+                /*.UseLoggerFactory(debugLoggingFactory)*/
                 .UseSqlite("DataSource=data.db");
         }
 
@@ -59,7 +78,9 @@ namespace JetsonModels.Context
         /// <summary>
         /// Assigns primary keys and associated database generation strategies to the storage types defined in <see cref="JetsonModels"/>.
         /// </summary>
-        /// <param name="modelBuilder"></param>
+        /// <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+        /// define extension methods on this object that allow you to configure aspects of the model that are specific
+        /// to a given database.</param>
         private void SetupPrimaryKeys(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cluster>()
@@ -87,15 +108,11 @@ namespace JetsonModels.Context
         /// <summary>
         /// Assigns <see cref="ValueConverter"/>s to properties in <see cref="JetsonModels"/> to optimize storage in SQLite.
         /// </summary>
-        /// <param name="modelBuilder"></param>
+        /// <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+        /// define extension methods on this object that allow you to configure aspects of the model that are specific
+        /// to a given database.</param>
         private void SetupValueConversions(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<NodeUtilization>()
-            //  .Property(x => x.Cores)
-            //  .HasConversion(
-            //      v => JsonConvert.SerializeObject(v),
-            //      v => JsonConvert.DeserializeObject<ICollection<CpuCore>>(v));
-
             // Setup value conversion for CpuCore since CPU cores don't need primary keys
             modelBuilder.Entity<NodeUtilization>()
                 .Property(x => x.Cores)
@@ -115,7 +132,9 @@ namespace JetsonModels.Context
         /// <summary>
         /// Creates database indexes to speedup lookups on frequently used properties in <see cref="JetsonModels"/>.
         /// </summary>
-        /// <param name="modelBuilder"></param>
+        /// <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+        /// define extension methods on this object that allow you to configure aspects of the model that are specific
+        /// to a given database.</param>
         private void SetupIndexes(ModelBuilder modelBuilder)
         {
             // Index on NodeUtilization GlobalNodeId to speedup lookups

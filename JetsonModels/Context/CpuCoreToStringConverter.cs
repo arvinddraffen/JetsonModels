@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using JetsonModels;
+using JetsonModels.Database;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JetsonModels.Context

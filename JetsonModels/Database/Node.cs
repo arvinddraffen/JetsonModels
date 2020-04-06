@@ -27,5 +27,15 @@ namespace JetsonModels.Database
         /// Gets or sets the IP Address of this <see cref="Node"/>.
         /// </summary>
         public string IPAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Operating System of this <see cref="Node"/>.
+        /// </summary>
+        public string OperatingSystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets the uptime of this <see cref="Node"/>.
+        /// </summary>
+        public TimeSpan UpTime { get; set; }
     }
 }

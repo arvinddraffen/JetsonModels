@@ -30,7 +30,9 @@ namespace JetsonModels.Context
         /// with Entity Framework. If object tracking is enabled, the database will
         /// be automatically generated if needed.
         /// </param>
-        public ClusterContext(DbContextOptions options, bool asNoTracking = false) : base(options)
+        /// <param name="options">Options for the database context, used to configure ConnectionString for the database.</param>
+        public ClusterContext(DbContextOptions options, bool asNoTracking = false)
+            : base(options)
         {
             if (asNoTracking)
             {

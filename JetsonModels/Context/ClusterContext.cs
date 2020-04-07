@@ -30,7 +30,7 @@ namespace JetsonModels.Context
         /// with Entity Framework. If object tracking is enabled, the database will
         /// be automatically generated if needed.
         /// </param>
-        public ClusterContext(bool asNoTracking = false)
+        public ClusterContext(DbContextOptions options, bool asNoTracking = false) : base(options)
         {
             if (asNoTracking)
             {
@@ -56,15 +56,6 @@ namespace JetsonModels.Context
         /// Gets or sets the database set of all Node Utilization Entries (<see cref="UtilizationData"/>) in the database.
         /// </summary>
         public DbSet<NodeUtilization> UtilizationData { get; set; }
-
-        /// <inheritdoc/>
-        /// <param name="options"></param>
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options
-                /*.UseLoggerFactory(debugLoggingFactory)*/
-                .UseSqlite("DataSource=data.db");
-        }
 
         /// <inheritdoc/>
         /// <param name="modelBuilder"></param>
